@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guía meteorológica de España (capas)</title>
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">España: unidades orográficas y climáticas</div>
+      <div class="subtitle">Mapa interactivo divulgativo (capas + búsqueda + compartir)</div>
+    </div>
+
+    <div class="controls">
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Buscar: Ebro, Sistema Ibérico, Mar Cantábrico..." />
+        <button id="searchBtn" type="button">Buscar</button>
+      </div>
+
+      <button id="shareBtn" type="button" class="secondary">Copiar enlace</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="card">
+        <h2>Capas</h2>
+        <div class="layer-toggles">
+          <label><input type="checkbox" data-layer="montanas" checked /> ⛰️ Sistemas montañosos</label>
+          <label><input type="checkbox" data-layer="mesetas" checked /> ▭ Mesetas y altiplanos</label>
+          <label><input type="checkbox" data-layer="depresiones" checked /> 🌿 Depresiones y valles</label>
+          <label><input type="checkbox" data-layer="mar" checked /> 🌊 Zonas marítimas</label>
+        </div>
+        <p class="hint">
+          Toca una zona para ver una explicación breve de por qué importa en la predicción.
+        </p>
+      </section>
+
+      <section class="card" id="infoCard">
+        <h2 id="infoTitle">Selecciona una zona</h2>
+        <div class="meta">
+          <span id="infoType" class="pill">—</span>
+        </div>
+        <p id="infoDesc" class="desc">Haz clic en cualquier elemento del mapa.</p>
+        <p id="infoImp" class="imp"></p>
+        <div class="examples" id="infoExamples"></div>
+      </section>
+
+      <section class="card">
+        <h2>Crédito y rigor</h2>
+        <p class="small">
+          Este visor es divulgativo. Los límites cartográficos pueden refinarse con fuentes oficiales y revisión
+          (por ejemplo, modelos digitales de elevación + delimitación fisiográfica).
+        </p>
+      </section>
+    </aside>
+
+    <section class="mapwrap">
+      <div id="map"></div>
+      <div class="footer-note">
+        Consejo: prueba el modo compartir tras activar/desactivar capas y seleccionar una zona.
+      </div>
+    </section>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="./app.js"></script>
+</body>
+</html>
